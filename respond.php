@@ -62,7 +62,7 @@ if(isset($_GET['email'])) {
 }
 ?>
   <form action="respond.php" method="post">
-        <input type="text" name="customer_email" value="<?php echo $customerEmail; ?>">
+        <input type="hidden" name="customer_email" value="<?php echo $customerEmail; ?>">
         <textarea name="response_message" rows="4" cols="50" placeholder="Enter your response here"></textarea><br>
         <input type="submit" name="submitresponse" value="Send Response">
     </form>
