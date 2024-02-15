@@ -14,8 +14,14 @@ if (isset($_POST['save'])) {
             $phonenumber = $_POST['phonenumber'][$key];
             $idnumber = $_POST['idnumber'][$key];
 
-            // Update user details in the database using the ID number as the identifier
-            $sqlUpdateUser = "UPDATE register SET fullname='$fullname', email='$email', phonenumber='$phonenumber' WHERE idnumber='$idnumber'";
+            // Update user details in the register table using the ID number as the identifier
+            $sqlUpdateRegister = "UPDATE register SET fullname='$fullname', email='$email', phonenumber='$phonenumber' WHERE idnumber='$idnumber'";
+            if ($con->query($sqlUpdateRegister) !== true) {
+                echo "Error updating user: " . mysqli_error($con);
+            }
+
+            // Update user details in the user table using the email as the identifier
+            $sqlUpdateUser = "UPDATE user SET username='$email' WHERE username='$email'";
             if ($con->query($sqlUpdateUser) !== true) {
                 echo "Error updating user: " . mysqli_error($con);
             }
@@ -36,9 +42,14 @@ if (isset($_POST['deleteUser'])) {
     // Check if users are selected for deletion
     if (isset($_POST['selectedUsers'])) {
         $selectedUsers = $_POST['selectedUsers'];
-        // Loop through selected users and delete them from the database
+        // Loop through selected users and delete them from both tables
         foreach ($selectedUsers as $userId) {
-            $sqlDeleteUser = "DELETE FROM register WHERE idnumber='$userId'";
+            $sqlDeleteRegister = "DELETE FROM register WHERE idnumber='$userId'";
+            if ($con->query($sqlDeleteRegister) !== true) {
+                echo "Error deleting user: " . mysqli_error($con);
+            }
+
+            $sqlDeleteUser = "DELETE FROM user WHERE username IN (SELECT email FROM register WHERE idnumber='$userId')";
             if ($con->query($sqlDeleteUser) !== true) {
                 echo "Error deleting user: " . mysqli_error($con);
             }
@@ -50,10 +61,6 @@ if (isset($_POST['deleteUser'])) {
         echo "<script>alert('Please select at least one user to delete.');</script>";
     }
 }
-
-// Fetch user records from the database
-$sqlSelectUsers = "SELECT * FROM register";
-$result = mysqli_query($con, $sqlSelectUsers);
 ?>
 
 <!DOCTYPE html>
@@ -62,6 +69,7 @@ $result = mysqli_query($con, $sqlSelectUsers);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Management</title>
+    
     <style>
         table {
             width: 100%;
@@ -73,6 +81,9 @@ $result = mysqli_query($con, $sqlSelectUsers);
             border-bottom: 1px solid #ddd;
         }
     </style>
+      
+      <link rel="stylesheet" href="css/general.css">
+   
     <script>
         function addUserRow() {
             // Create a new row for adding a user
@@ -96,6 +107,17 @@ $result = mysqli_query($con, $sqlSelectUsers);
     </script>
 </head>
 <body>
+<header class="">
+    <div class="usernav">
+        <nav class="">
+            <a href="dashboard.php">Dashboard</a>
+            <a href="admin.php">Add Products</a>
+            <a href="products.php">View Products</a>
+            <a href="user.php">System Users</a>
+            <a href="customer.php">Customer Feedback</a>
+        </nav>
+    </div>
+</header>
 
 <h2>User Management</h2>
 
@@ -109,6 +131,9 @@ $result = mysqli_query($con, $sqlSelectUsers);
             <th>ID Number</th>
         </tr>
         <?php
+        // Fetch user records from the database
+        $sqlSelectUsers = "SELECT * FROM register";
+        $result = mysqli_query($con, $sqlSelectUsers);
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td><input type='checkbox' name='selectedUsers[]' value='{$row['idnumber']}'></td>";
