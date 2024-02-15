@@ -154,6 +154,7 @@ if (isset($_POST['deleteUser'])) {
         <tr>
             <td colspan="5">
                 <button type="button" onclick="addUserRow()">Add User</button>
+                <!-- <button type="button" onclick="addUserRow()">Add User</button> -->
                 <button type="button" onclick="confirmDeleteUser()">Delete User</button>
                 <button type="submit" name="save">Save Changes</button>
             </td>
