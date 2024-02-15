@@ -1,0 +1,90 @@
+/* Updated CSS for the login form with Create Account and Back Home links */
+body {
+    background: #f5f5f5; /* Set background color for the body */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Ensure full height */
+    margin: 0; /* Reset body margin */
+}
+
+.login-form {
+    width: 30rem;
+    padding: 2rem;
+    background: #fff; /* Set a white background for the form */
+    border-radius: 0.5rem; /* Add rounded corners to the form */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    text-align: center; /* Center text within the form */
+    border: 4px solid #ff7800; /* Add a border with a nice color */
+}
+
+.login-form h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #333; /* Dark text color for heading */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left; /* Align text to the left within the form group */
+}
+
+label {
+    display: block;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    color: #555; /* Medium dark text color for labels */
+}
+
+input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border: none; /* Remove default border */
+    border-bottom: 2px solid #ff7800; /* Orange border for input */
+    border-radius: 0; /* Remove border-radius to make it rectangular */
+    box-sizing: border-box; /* Ensure proper box-sizing for input */
+    color: #333; /* Dark text color for input */
+}
+
+.login-button {
+    background-color: #ff7800; /* Orange background color for the button */
+    color: #fff; /* White text color for the button */
+    padding: 1rem 2rem;
+    font-size: 1.7rem;
+    border: 2px solid #ff7800; /* Orange border for the button */
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem; /* Add some space between button and links */
+    margin-bottom: 1rem; /* Add space below the button */
+}
+
+.login-button:hover {
+    background-color: #e06600; /* Slightly darker shade on hover */
+    border: 2px solid #e06600; /* Slightly darker border on hover */
+}
+
+/* Arrange create account and back home links */
+.login-form .links {
+    display: flex;
+    justify-content: space-between; /* Adjusted to space between the links */
+    margin-top: 1.5rem;
+}
+
+.login-form a {
+    color: #333; /* Dark text color for links */
+    text-align: center;
+    font-size: 1.6rem;
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 2px solid #333; /* Dark border color for links */
+    border-radius: 0.3rem;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.login-form a:hover {
+    background-color: #333; /* Dark background color on hover */
+    color: #fff; /* White text color on hover */
+    border-color: #fff; /* White border color on hover */
+}

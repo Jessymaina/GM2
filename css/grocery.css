@@ -1,0 +1,269 @@
+/* Define CSS custom properties (variables) */
+:root {
+    --orange: #ff7800; /* Define orange color */
+    --black: #130540; /* Define black color */
+    --light-color: #666; /* Define light color */
+    --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 1); /* Define box shadow */
+}
+
+/* Reset styles for all elements */
+* {
+    font-family: 'Times New Roman', Times, serif; /* Set font family for all elements */
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    outline: none; /* Remove default outline */
+    border: none; /* Remove default border */
+    text-decoration: none; /* Remove text decoration */
+    text-transform: capitalize; /* Capitalize text */
+    transition: all 0.3s linear; /* Apply a smooth transition to all properties */
+}
+
+/* Set base font size for easier rem calculations */
+html {
+    font-size: 62.5%; /* Set base font size to 10px for easier rem calculations */
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+    scroll-behavior: smooth; /* Enable smooth scrolling */
+}
+
+/* Set background color for the body */
+body {
+    background: #eee; /* Set background color for the body */
+}
+
+.btn {
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 8rem 3rem;
+    font-size: 1.7rem;
+    border-radius: .5rem;
+    border: .2rem solid var(--black);
+    color: var(--black);
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--orange);
+    color: #fff;
+}
+
+/* Styles for the fixed header */
+.header {
+  
+    position:fixed; /* Fix the header position */
+    top: 0; /* Align header to the top */
+    left: 0; /* Align header to the left */
+    right: 0; /* Align header to the right */
+    z-index: 1000; /* Set z-index to ensure it's on top of other elements */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between items horizontally */
+    padding: 2rem 9%; /* Padding for the header */
+    background: #fff; /* Set background color for the header */
+    box-shadow: var(--box-shadow); /* Apply box shadow using the defined variable */
+}
+
+/* Styles for the logo in the header */
+.header .logo {
+    font-size: 2.5rem; /* Set font size for the logo */
+    font-weight: bolder; /* Set font weight for the logo */
+    color: var(--black); /* Set color for the logo using the defined variable */
+}
+
+/* Styles for the logo on hover */
+.header .logo:hover {
+    color: var(--orange); /* Change color on hover to the defined orange color */
+}
+
+/* Styles for navigation links in the header */
+.header .navbar a {
+    font-size: 1.7rem; /* Set font size for navigation links */
+    margin: 0 1rem; /* Set margin for navigation links */
+    color: var(--black); /* Set color for navigation links using the defined variable */
+}
+
+/* Styles for navigation links on hover */
+.header .navbar a:hover {
+    color: var(--orange); /* Change color on hover to the defined orange color */
+}
+
+/* Styles for icons container in the header */
+.header .icons {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    height: 4.5rem; /* Set height for the icons container */
+}
+
+/* Styles for individual icons in the header */
+.header .icons div {
+    width: 4.5rem; /* Set width for individual icons */
+    height: 100%; /* Set height to fill the container */
+    line-height: 4.5rem; /* Set line height for vertical centering */
+    border-radius: .5rem; /* Set border radius for rounded corners */
+    background: #eee; /* Set background color for icons */
+    font-size: 2rem; /* Set font size for icons */
+    margin-right: .3rem; /* Set margin to separate icons */
+    text-align: center; /* Center text horizontally */
+    cursor: pointer; /* Set cursor to pointer for interactivity */
+}
+
+/* Styles for icons on hover */
+.header .icons div:hover {
+    background: var(--orange); /* Change background color on hover to the defined orange color */
+    color: #fff; /* Change text color on hover to white */
+}
+
+/* Styles for the search form in the header */
+.header .search-form {
+    position: absolute; /* Position the search form absolutely */
+    top: 110%; /* Set distance from the top */
+    right: 10%; /* Set distance from the right */
+    width: 50rem; /* Set width for the search form */
+    height: 5rem; /* Set height for the search form */
+    background: #fff; /* Set background color for the search form */
+    border-radius: .5rem; /* Set border radius for rounded corners */
+    overflow: hidden; /* Hide overflowing content */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    box-shadow: var(--box-shadow); /* Apply box shadow using the defined variable */
+    transition: right 0.4s linear; /* Add transition for smooth animation */
+}
+
+/* Styles for the search input in the search form */
+.header .search-form input {
+    height: 100%; /* Set height to fill the search form */
+    width: 100%; /* Set width to fill the search form */
+    background: none; /* Set background to none */
+    text-transform: none; /* Reset text transformation */
+    font-size: 1.6rem; /* Set font size for the search input */
+    color: var(--black); /* Set text color using the defined variable */
+    padding: 0 1.5rem; /* Set padding for the search input */
+}
+
+/* Styles for the search label (search button) in the search form */
+.header .search-form label {
+    font-size: 2.2rem; /* Set font size for the search label */
+    padding-right: 1.5rem; /* Set padding on the right */
+    color: var(--black); /* Set text color using the defined variable */
+    cursor: pointer; /* Set cursor to pointer for interactivity */
+}
+
+/* Styles for the search label on hover */
+.header .search-form label:hover {
+    color: var(--orange); /* Change text color on hover to the defined orange color */
+}
+
+/* Styles for the active state of the search form */
+.header .search-form.active {
+    right: 2rem; /* Adjusted right value for the active state */
+}
+
+/* Styles for hiding the search form */
+.header .search-form.hidden {
+    display: none; /* Hide the search form */
+}
+.carousel-control-next-icon{
+    background-color: #ff7800;
+}
+.carousel-control-prev-icon{
+    background-color: #ff7800;
+}
+.carousel-item{
+    padding: 32px;
+}
+@keyframes bounceIn {
+    from {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.card {
+    animation: bounceIn 0.5s ease-out;
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    border-radius: 20px;
+    border-width: 5px;
+}
+h2{
+    color: #002147;
+   font-weight: bolder;
+   margin-top: 16px;
+   margin-bottom: 16px;
+
+}
+/* Footer styles */
+footer {
+    background-color:  #e1f5fe; /* Background color for the footer */
+    padding: 20px 0;
+    text-align: center;
+}
+
+.social-icons a {
+    display: inline-block;
+    margin: 0 10px; /* Adjust the spacing between icons */
+}
+
+.social-icons a i {
+    font-size: 24px; /* Adjust the icon size */
+    color: #333; /* Adjust the icon color */
+}
+
+.rating{
+    color: #ff7800;
+}
+.cartcontrols{
+    display: flex;
+}
+.minus{
+background: red;
+margin: 2px;
+width: 50px;
+height: 50px;
+border: 2px solid black; 
+border-radius: 25px;
+font-size: 32px;
+font-weight: bold;
+cursor: pointer;
+}
+.plus{
+    background: rgb(0, 255, 34);
+    margin: 2px;
+    width: 50px;
+   height: 50px;
+   border: 2px solid black; 
+    border-radius: 25px;
+    font-size:32px;
+    font-weight: bold;
+    cursor: pointer;
+    }
+    .add{
+        background: rgb(255, 208, 0);
+        margin: 2px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        }
+        .label{
+         
+            margin: 2px;
+            font-size: 22px;
+            font-weight: bold;
+            }
+            footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                background-color: #f8f9fa; /* Set your desired background color */
+                padding: 10px; /* Adjust padding as needed */
+                box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for better visibility */
+            }
+            

@@ -1,0 +1,122 @@
+/* style.css */
+
+/* Header Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #fff;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    align-items: center;
+ 
+    padding: 8px;
+    background-color: #fff;
+    color: #333;
+    box-shadow: 0 2px 5px rgba(36, 11, 11, 0.1);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+a {
+    color: #070707;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+    padding-left: 30px; /* corrected property name */
+    margin-left: 10px;
+}
+
+a:hover {
+    color: #ff7800;
+}
+
+.cart {
+    position: relative;
+}
+
+.cart span {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff7800;
+    color: #fff;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+.cart:hover span {
+    background-color: #292827;
+}
+
+/* Form Styles */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.addproduct {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+    background-color: #e7d376;
+    border-radius: 34px;
+    border-width: 100px; /* I'm not sure about this line; you might want to adjust it */
+    text-align: center;
+}
+
+.addproduct h3 {
+    margin-bottom: 20px;
+    color: #333; /* Updated text color */
+}
+
+.box {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ff7800; /* corrected color code */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn {
+    background-color: #ff7800;
+    color: #fff;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #5c5656;
+}
+table {
+    width: 90%;
+    margin: 20px auto; /* Adds 20px margin on top and bottom, and centers the table horizontally */
+    border-collapse: collapse;
+    border: 1px solid black; /* Add border to the table */
+}
+
+th, td {
+    padding: 12px; /* Increase padding for better spacing */
+    border: 1px solid black;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}

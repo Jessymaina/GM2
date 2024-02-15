@@ -1,0 +1,39 @@
+.mybutton {
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 16px;
+    font-size: 22px;
+    font-weight: bold;
+}
+.btnorange{
+    background-color: orange;
+}
+.myimage {
+    border-radius: 20px;
+    width: 200px;
+    height: 200px;
+    padding: 40px;
+    outline: 1px solid orange;
+}
+.carouselinner{
+
+display: flex;
+     padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 120px;
+    margin-bottom: 16px;
+    font-size: 22px;
+    font-weight: bold;
+}
+p{
+    font-size: large;
+}
+form{
+    font-size: large;
+}

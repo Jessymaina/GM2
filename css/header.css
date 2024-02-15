@@ -1,0 +1,56 @@
+/* header.css */
+
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Use a commonly available sans-serif font */
+}
+
+.header {
+    background-color: #130540; /* Dark purple background color for the header */
+    color: #fff; /* White text color */
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle box shadow */
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    margin-right: 20px;
+    font-size: 16px;
+    transition: color 0.3s; /* Smooth color transition on hover */
+}
+
+.navbar a:hover {
+    color: #ff7800; /* Orange color on hover */
+}
+
+.cart {
+    position: relative;
+}
+
+.cart span {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff7800; /* Orange background color for the notification */
+    color: #fff;
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+/* Adjusted hover effect for cart */
+.cart:hover span {
+    background-color: #e06600; /* Slightly darker shade on hover */
+}

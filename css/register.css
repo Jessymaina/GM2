@@ -1,0 +1,111 @@
+/* CSS for the registration form */
+
+body {
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.login-form {
+    max-width: 30rem;
+    width: 100%;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    border: 4px solid #ff7800;
+    overflow: hidden;
+}
+
+.login-form h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.6rem;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    border-radius: 0.3rem;
+    box-sizing: border-box;
+    color: #333;
+    background-color: transparent; /* Updated to make input fields visible */
+}
+
+.login-button {
+    background-color: #ff7800;
+    color: #fff;
+    padding: 1rem 2rem;
+    font-size: 1.7rem;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+}
+
+.login-button:hover {
+    background-color: #e06600;
+}
+
+.login-form .links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+}
+
+.login-form a {
+    color: #333;
+    text-align: center;
+    font-size: 1.6rem;
+    text-decoration: none;
+    border: 2px solid #ff7800;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.login-form a:hover {
+    color: #fff;
+    background-color: #ff7800;
+}
+
+.login-form {
+    border: 2px solid #ff7800;
+    padding: 2rem;
+}
+
+.login-button {
+    border: 2px solid #ff7800;
+}
+
+.login-button:hover {
+    background-color: #ff7800;
+    border: 2px solid #e06600;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .login-form {
+        max-width: 100%;
+    }
+}
