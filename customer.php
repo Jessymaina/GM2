@@ -17,7 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,6 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <input type="text" id="feedbackName" name="feedbackName" readonly>
         <input type="email" id="feedbackEmail" name="feedbackEmail" readonly>
         <textarea id="feedbackMessage" name="feedbackMessage" readonly></textarea>
+        <input type="text" placeholder="Subject" name="subject" required>
         <textarea id="responseMessage" placeholder="Your response..." name="response" required></textarea>
         <button type="submit">Send</button>
     </form>
