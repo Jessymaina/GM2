@@ -13,6 +13,50 @@ require_once('connection.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/grocery.css">
     <link rel="stylesheet" href="css/general.css">
+    <style>
+            .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .product {
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 300px;
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .product button {
+            background-color: #4CAF50;
+            border: none;
+            color: yellow;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+
+        .product button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    </style>
 </head>
 
 <body>
@@ -83,39 +127,36 @@ require_once('connection.php');
     </section>
 
     <!-- Products Section -->
-    <section id="Products">
-        <div class="container">
-            <h2>Featured Products</h2>
-            <div class="card-group">
-                <div class="card">
-                    <img src="assets/green grapes.png" class="myimage" alt="Product 1">
-                    <div class="card-body">
-                        <h5 class="card-title">green grapes</h5>
-                        <p class="card-text">Price: $19.99</p>
-                        <a href="#" class="mybutton btnorange">View Details</a>
-                    </div>
-                </div>
+    <section id="Products" style="padding-left:100px;">
+    <h2>Featured Products</h2>
+    <div class="product-container">
+        <?php
+        require_once('connection.php');
 
-                <div class="card">
-                    <img src="assets/watermelon.png" class="myimage" alt="Product 1">
-                    <div class="card-body">
-                        <h5 class="card-title">watermelon</h5>
-                        <p class="card-text">Price: $19.99</p>
-                        <a href="#" class="mybutton btnorange">View Details</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="assets/tomato.png" class="myimage" alt="Product 1">
-                    <div class="card-body">
-                        <h5 class="card-title">tomato</h5>
-                        <p class="card-text">Price: $19.99</p>
-                        <a href="#" class="mybutton btnorange">View Details</a>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-    </section>
+        $sql = "SELECT * FROM product";
+        $result = mysqli_query($con, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<div class='product'>";
+                echo "<h3>" . $row["productname"] . "</h3>";
+                echo "<p>Price: $" . $row["productprice"] . "</p>";
+                echo "<p>Quantity: <span id='quantity-" . $row["productcode"] . "' class='itemsavailable'>" . $row["productquantity"] . "</span></p>";
+                echo "<p>Description: " . $row["productdescription"] . "</p>";
+                echo "<img src='" . $row["file"] . "' alt='" . $row["productname"] . "'>";
+                echo '<div class="cartcontrols">';
+                            echo '</div>';
+                echo "</div>"; // Close product container
+            }
+        } else {
+            echo "No products available";
+        }
+
+        mysqli_close($con);
+        ?>
+    </div>
+</section>
+
 
     <!-- Reviews Section -->
     <section id="Reviews">
