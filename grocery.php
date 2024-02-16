@@ -302,7 +302,7 @@ if(isset($_POST['submit'])) {
     <div class="container">
     <h2>Contact Us</h2>
     <p>For any inquiries or assistance, please feel free to contact us.</p>
-    <form id="myForm" action="respond.php" method="POST">  <!--removed respond.php in action -->
+    <form id="myForm" action="grocery.php" method="POST">  <!--removed respond.php in action -->
     <div class="mb-3">
         <label for="NAME" class="form-label">Your Name</label>
         <input type="text" class="form-control" id="name" name="NAME" required>
