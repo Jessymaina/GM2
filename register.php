@@ -54,7 +54,7 @@ else{
             </div>
             <div class="form-group">
                 <label for="email">EMAIL:</label>
-                <input type="text" id="email" name="email" required>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
                 <label for="phonenumber">PHONE NUMBER:</label>
@@ -79,6 +79,6 @@ else{
         <a href="index.php">back to log in</a>
     <a href="home.php">back home</a>
     </div>
- 
+
 </body>
 </html>
