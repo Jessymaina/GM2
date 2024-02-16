@@ -8,6 +8,7 @@ require_once('connection.php');
 if (isset($_POST['save'])) {
     // Loop through the submitted data to update user details
     foreach ($_POST['fullname'] as $key => $fullname) {
+        
         // Check if the other arrays are set as well
         if (isset($_POST['email'][$key], $_POST['phonenumber'][$key], $_POST['idnumber'][$key])) {
             $email = $_POST['email'][$key];
@@ -38,7 +39,30 @@ if (isset($_POST['addUser'])) {
 }
 
 // Check if delete user button is clicked
-if (isset($_POST['deleteUser'])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if the delete button is clicked
+    if (isset($_POST['delete'])) {
+        // Check if any user is selected for deletion
+        if (isset($_POST['selectedUsers'])) {
+            // Loop through each selected user and delete them
+            foreach ($_POST['selectedUsers'] as $userId) {
+                $sqlDeleteUser = "DELETE FROM register WHERE idnumber='$userId'";
+                mysqli_query($con, $sqlDeleteUser);
+            }
+            // Redirect to the same page after deletion
+            header("Location: ".$_SERVER['PHP_SELF']);
+            exit;
+        } else {
+            echo "Please select at least one user to delete.";
+        }
+    }
+}
+
+// Fetch user records from the database
+$sqlSelectUsers = "SELECT * FROM register";
+$result = mysqli_query($con, $sqlSelectUsers);
+
+if (isset($_POST['xxx'])) {
     // Check if users are selected for deletion
     if (isset($_POST['selectedUsers'])) {
         $selectedUsers = $_POST['selectedUsers'];
@@ -49,7 +73,7 @@ if (isset($_POST['deleteUser'])) {
                 echo "Error deleting user: " . mysqli_error($con);
             }
 
-            $sqlDeleteUser = "DELETE FROM user WHERE username IN (SELECT email FROM register WHERE idnumber='$userId')";
+            $sqlDelete = "DELETE register, user FROM register INNER JOIN user ON register.email = user.username WHERE register.email='$email'";
             if ($con->query($sqlDeleteUser) !== true) {
                 echo "Error deleting user: " . mysqli_error($con);
             }
@@ -71,15 +95,47 @@ if (isset($_POST['deleteUser'])) {
     <title>User Management</title>
     
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
+         table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+        
+    }
+    
+    th {
+        background-color: #f2f2f2;
+        background:orange;
+    }
+    
+    tr:hover {
+        background-color: #f2f2f2;
+    }
+    
+    input[type="text"],
+    input[type="email"] {
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+    
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 8px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+    }
+    
+    button:hover {
+        background-color: #45a049;
+    }
     </style>
       
       <link rel="stylesheet" href="css/general.css">
@@ -131,9 +187,6 @@ if (isset($_POST['deleteUser'])) {
             <th>ID Number</th>
         </tr>
         <?php
-        // Fetch user records from the database
-        $sqlSelectUsers = "SELECT * FROM register";
-        $result = mysqli_query($con, $sqlSelectUsers);
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td><input type='checkbox' name='selectedUsers[]' value='{$row['idnumber']}'></td>";
@@ -154,8 +207,7 @@ if (isset($_POST['deleteUser'])) {
         <tr>
             <td colspan="5">
                 <button type="button" onclick="addUserRow()">Add User</button>
-                <!-- <button type="button" onclick="addUserRow()">Add User</button> -->
-                <button type="button" onclick="confirmDeleteUser()">Delete User</button>
+                <button type="submit" name="delete">Delete User</button>
                 <button type="submit" name="save">Save Changes</button>
             </td>
         </tr>

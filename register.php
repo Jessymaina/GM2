@@ -46,39 +46,55 @@ else{
 </head>
 <body>
 <div class="login-form">
-        <h2>create account</h2>
-        <form action="register.php" method="post">
-            <div class="form-group">
-                <label for="name">NAME:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">EMAIL:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phonenumber">PHONE NUMBER:</label>
-                <input type="number" id="phonenumber" name="phonenumber" required>
-            </div>
-            <div class="form-group">
-                <label for="idnumber">ID NUMBER:</label>
-                <input type="number" id="idnumber" name="idnumber" required>
-            </div>
-
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password1" name="password1" required>
-            </div>
-            <div class="form-group">
-                <label for="password">Confirm Password:</label>
-                <input type="password" id="password2" name="password2" required>
-            </div>
-
-            <button type="submit" name="register" class="login-button">register</button>
-        </form>
+    <h2>Create Account</h2>
+    <form action="register.php" method="post">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required oninput="checkEmailValidity(this)">
+            <small id="email-error-msg" style="color: red;"></small>
+        </div>
+        <div class="form-group">
+            <label for="phonenumber">Phone Number:</label>
+            <input type="tel" id="phonenumber" name="phonenumber" pattern="[0-9]{10}" required>
+            <small>Format: 10 digits</small>
+        </div>
+        <div class="form-group">
+            <label for="idnumber">ID Number:</label>
+            <input type="text" id="idnumber" name="idnumber" pattern="[0-9]{8}" required>
+            <small>Format: 8 digits</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password1" name="password1" minlength="6" required>
+            <small>Minimum length: 6 characters</small>
+        </div>
+        <div class="form-group">
+            <label for="password">Confirm Password:</label>
+            <input type="password" id="password2" name="password2" minlength="6" required>
+            <small>Minimum length: 6 characters</small>
+        </div>
+        <button type="submit" name="register" class="login-button">Register</button>
+    </form>
         <a href="index.php">back to log in</a>
     <a href="home.php">back home</a>
     </div>
+    <script>
+    function checkEmailValidity(input) {
+        let email = input.value;
+        let errorMessage = "";
+        let emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+        if (!emailRegex.test(email)) {
+            errorMessage = "Please enter a valid email address.";
+        }
+
+        document.getElementById("email-error-msg").textContent = errorMessage;
+        input.setCustomValidity(errorMessage);
+    }
+</script>
 </body>
 </html>
